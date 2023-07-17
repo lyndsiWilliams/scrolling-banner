@@ -6,7 +6,7 @@ const StyledScrollingBanner = styled.div`
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-75%);
+      transform: translateX(-95%);
     }
   }
   overflow: hidden;
