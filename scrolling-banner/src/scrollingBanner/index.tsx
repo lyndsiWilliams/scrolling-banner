@@ -1,11 +1,6 @@
-import { IKImage } from "imagekitio-react";
 import { styled } from "styled-components";
 
-interface StyledCarouselProps {
-  maxHeight?: string;
-}
-
-const StyledCarousel = styled.div<StyledCarouselProps>`
+const StyledScrollingBanner = styled.div`
   @keyframes scroll {
     0% {
       transform: translateX(0);
@@ -14,14 +9,13 @@ const StyledCarousel = styled.div<StyledCarouselProps>`
       transform: translateX(-75%);
     }
   }
-  margin-top: 2%;
+  overflow: hidden;
 
-  .slide-track {
+  .img-track {
     animation: scroll 60s linear infinite;
     display: flex;
-    width: 100%;
-    max-height: ${(props) => props.maxHeight}px;
-    height: ${(props) => props.maxHeight}px;
+    width: 5000px;
+    height: 450px;
 
     &:hover {
       animation-play-state: paused;
@@ -29,34 +23,24 @@ const StyledCarousel = styled.div<StyledCarouselProps>`
   }
 `;
 
-const Carousel = ({
+const ScrollingBanner = ({
   images,
-  maxHeight = "450",
   altText = "Screenshot",
 }: {
   images: string[] | undefined;
-  maxHeight?: string;
   altText?: string;
 }) => (
-  <StyledCarousel maxHeight={maxHeight}>
-    <div className="slide-track">
-      {images &&
-        images.map((element, i) => {
-          return (
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            <IKImage
-              key={i}
-              alt={altText}
-              urlEndpoint={`https://ik.imagekit.io/amythia/`}
-              path={element}
-              height={maxHeight}
-              lqip={{ active: true }}
-            />
-          );
-        })}
+  <StyledScrollingBanner>
+    <div className="img-track">
+      {images?.map((element, i) => (
+        <img
+          key={i}
+          src={`https://ik.imagekit.io/amythia/${element}`}
+          alt={altText}
+        />
+      ))}
     </div>
-  </StyledCarousel>
+  </StyledScrollingBanner>
 );
 
-export default Carousel;
+export default ScrollingBanner;
