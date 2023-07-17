@@ -1,1 +1,1 @@
-# scrolling-banner
+# Scrolling Banner
