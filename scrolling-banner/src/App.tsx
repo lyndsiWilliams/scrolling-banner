@@ -18,35 +18,33 @@ const StyledCard = styled.div`
   border: 12px solid rebeccapurple;
 `;
 
-function App() {
-  return (
-    <StyledCenteredElement>
-      <StyledCard>
-        <ScrollingBanner
-          images={[
-            "pixel/1.jpeg",
-            "pixel/2.jpeg",
-            "pixel/3.jpeg",
-            "pixel/4.jpeg",
-            "pixel/5.jpeg",
-            "pixel/7.jpeg",
-            "pixel/8.jpeg",
-            "pixel/9.jpeg",
-            "pixel/14.jpeg",
-            "pixel/15.jpeg",
-            "pixel/16.jpeg",
-            "pixel/17.jpeg",
-            "pixel/18.jpeg",
-            "pixel/19.jpeg",
-            "pixel/11.jpeg",
-          ]}
-        />
-        <StyledCenteredElement>
-          <p>Pixel McMeowkins</p>
-        </StyledCenteredElement>
-      </StyledCard>
-    </StyledCenteredElement>
-  );
-}
+const App = () => (
+  <StyledCenteredElement>
+    <StyledCard>
+      <ScrollingBanner
+        images={[
+          "pixel/1.jpeg",
+          "pixel/2.jpeg",
+          "pixel/3.jpeg",
+          "pixel/4.jpeg",
+          "pixel/5.jpeg",
+          "pixel/7.jpeg",
+          "pixel/8.jpeg",
+          "pixel/9.jpeg",
+          "pixel/14.jpeg",
+          "pixel/15.jpeg",
+          "pixel/16.jpeg",
+          "pixel/17.jpeg",
+          "pixel/18.jpeg",
+          "pixel/19.jpeg",
+          "pixel/11.jpeg",
+        ]}
+      />
+      <StyledCenteredElement>
+        <p>Pixel McMeowkins</p>
+      </StyledCenteredElement>
+    </StyledCard>
+  </StyledCenteredElement>
+);
 
 export default App;
