@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { styled } from "styled-components";
+import FullSizeImage, { ImageType } from "./FullSizeImage";
 
 const StyledScrollingBanner = styled.div`
   @keyframes scroll {
@@ -23,24 +25,46 @@ const StyledScrollingBanner = styled.div`
   }
 `;
 
+const exampleImage = {
+  image: "pixel/1.jpeg",
+  altText: "pixel mcmeowkins",
+};
+
 const ScrollingBanner = ({
   images,
   altText = "Screenshot",
 }: {
   images: string[] | undefined;
   altText?: string;
-}) => (
-  <StyledScrollingBanner>
-    <div className="img-track">
-      {images?.map((element, i) => (
-        <img
-          key={i}
-          src={`https://ik.imagekit.io/amythia/${element}`}
-          alt={altText}
-        />
-      ))}
-    </div>
-  </StyledScrollingBanner>
-);
+}) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const [item, setItem] = useState<ImageType>(exampleImage);
+  const handleClick = (item: ImageType) => {
+    setItem(item);
+    setOpen(!open);
+  };
+
+  return (
+    <StyledScrollingBanner>
+      <div className="img-track">
+        {images?.map((element, i) => (
+          <img
+            key={i}
+            src={`https://ik.imagekit.io/amythia/${element}`}
+            alt={altText}
+            onClick={() => handleClick({ image: element, altText })}
+          />
+        ))}
+      </div>
+      <FullSizeImage
+        open={open}
+        theImage={item.image}
+        altText={item.altText}
+        index={1}
+        setOpen={setOpen}
+      />
+    </StyledScrollingBanner>
+  );
+};
 
 export default ScrollingBanner;
